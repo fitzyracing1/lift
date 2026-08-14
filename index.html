@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lift — internet as Model</title>
+  <style>
+    :root { --bg: #0d1117; --fg: #e6edf3; --accent: #3fb950; --muted: #8b949e; --card: #161b22; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 2rem 1rem; }
+    .container { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    .subtitle { color: var(--muted); margin-bottom: 2rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card { background: var(--card); border: 1px solid #30363d; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    pre { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; overflow-x: auto; font-size: 0.9rem; }
+    code { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
+    .btn { display: inline-block; background: var(--accent); color: #0d1117; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 6px; margin-top: 1rem; }
+    .btn:hover { opacity: 0.9; text-decoration: none; }
+    footer { margin-top: 3rem; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>lift</h1>
+    <p class="subtitle">Treat the open internet (or any URL) as an ai::Model</p>
+
+    <div class="card">
+      <p>The same uniform interface from <strong>focus</strong>, now pointed at the whole web.</p>
+      <p style="margin-top:0.8rem"><code>ai::create_internet()</code> or pass any <code>https://...</code> and it becomes a Model you can <code>infer()</code> against.</p>
+      <a class="btn" href="https://raw.githubusercontent.com/fitzyracing1/lift/main/internet-as-model.hpp">Download internet-as-model.hpp</a>
+    </div>
+
+    <h2 style="margin:1.8rem 0 0.8rem">Usage</h2>
+    <pre><code>#include "internet-as-model.hpp"
+#include &lt;iostream&gt;
+
+int main() {
+    auto net  = ai::create_internet();                       // whole internet
+    auto site = ai::create_internet("https://example.com");  // specific URL
+
+    std::cout &lt;&lt; net-&gt;infer("summarize the current state of X") &lt;&lt; std::endl;
+}</code></pre>
+
+    <h2 style="margin:1.8rem 0 0.8rem">Repo</h2>
+    <p><a href="https://github.com/fitzyracing1/lift">github.com/fitzyracing1/lift</a></p>
+
+    <footer>
+      Companion to <a href="https://fitzyracing1.github.io/focus">focus</a> (the core uniform interface).
+    </footer>
+  </div>
+</body>
+</html>
